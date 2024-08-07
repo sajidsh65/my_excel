@@ -9,33 +9,59 @@
         body {
             background-color: #f7f7f7;
             font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
         }
+
         .container {
-            margin-top: 50px;
-            max-width: 500px; /* Decreased width */
             background: white;
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 500px; /* Sets a max width but allows shrinking */
+            margin: 20px;
         }
+
         h1 {
             text-align: center;
             color: #333;
             margin-bottom: 30px;
         }
+
         .form-group label {
             font-weight: bold;
         }
+
         .btn-group {
             display: flex;
-            justify-content: space-between;
+            flex-direction: column;
             margin-top: 20px;
         }
+
         .btn-group a,
         .btn-group button {
-            width:200px; /* Equal width for buttons */
+            width: 100%;
+            margin-bottom: 10px;
         }
-        
+
+        @media (min-width: 576px) {
+            .btn-group {
+                flex-direction: row;
+                justify-content: space-between;
+            }
+
+            .btn-group a,
+            .btn-group button {
+                width: 48%; /* Equal width for buttons on larger screens */
+                margin-bottom: 0;
+            }
+        }
     </style>
 </head>
 <body>

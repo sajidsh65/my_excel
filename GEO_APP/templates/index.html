@@ -10,15 +10,15 @@
 
         body {
             font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #34495e, #2c3e50);
             background: linear-gradient(135deg, #2980b9, #2ecc71);
-
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
             margin: 0;
             color: #ffffff;
+            padding: 10px; /* Add padding for smaller screens */
+            box-sizing: border-box;
         }
 
         .instructions-container {
@@ -26,11 +26,14 @@
             padding: 20px;
             border-radius: 15px;
             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            max-width: 90%; /* Set width relative to the viewport */
+            width: 100%;
             max-width: 700px;
             text-align: left;
             animation: pulse 1.5s infinite alternate;
             position: relative;
             padding-bottom: 60px; /* Add extra space for button */
+            box-sizing: border-box;
         }
 
         .instruction {
@@ -39,14 +42,14 @@
             animation: fadeIn 1.5s forwards;
             animation-delay: var(--delay);
             margin: 15px 0;
-            font-size: 18px;
+            font-size: 1rem; /* Use relative font size */
             line-height: 1.6;
         }
 
         /* Increase font weight and make the heading bold */
         .head {
             font-weight: 600;
-            font-size: 20px;
+            font-size: 1.2rem; /* Use relative font size */
         }
 
         /* Colorful instructions */
@@ -69,10 +72,13 @@
             border-radius: 25px;
             font-weight: 600;
             text-transform: uppercase;
-            font-size: 16px;
+            font-size: 1rem;
             cursor: pointer;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
             transition: background-color 0.3s, color 0.3s;
+            width: calc(100% - 40px); /* Ensure button is responsive */
+            max-width: 200px;
+            text-align: center;
         }
 
         .try-now-button:hover {
@@ -93,6 +99,27 @@
             }
             to {
                 transform: scale(1.03);
+            }
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 600px) {
+            .instructions-container {
+                padding: 15px;
+                padding-bottom: 50px;
+            }
+
+            .instruction {
+                font-size: 0.9rem;
+            }
+
+            .head {
+                font-size: 1rem;
+            }
+
+            .try-now-button {
+                font-size: 0.9rem;
+                padding: 8px 15px;
             }
         }
     </style>
