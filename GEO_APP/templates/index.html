@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to GEOAPP</title>
+    <style>
+        /* Import Google Font */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #34495e, #2c3e50);
+            background: linear-gradient(135deg, #2980b9, #2ecc71);
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            color: #ffffff;
+        }
+
+        .instructions-container {
+            background: linear-gradient(135deg, #8e44ad, #f39c12);
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            max-width: 700px;
+            text-align: left;
+            animation: pulse 1.5s infinite alternate;
+            position: relative;
+            padding-bottom: 60px; /* Add extra space for button */
+        }
+
+        .instruction {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeIn 1.5s forwards;
+            animation-delay: var(--delay);
+            margin: 15px 0;
+            font-size: 18px;
+            line-height: 1.6;
+        }
+
+        /* Increase font weight and make the heading bold */
+        .head {
+            font-weight: 600;
+            font-size: 20px;
+        }
+
+        /* Colorful instructions */
+        .instruction:nth-child(1) { color: black; --delay: 0s; }
+        .instruction:nth-child(2) { color: black; --delay: 2s; }
+        .instruction:nth-child(3) { color: black; --delay: 4s; }
+        .instruction:nth-child(4) { color: black; --delay: 6s; }
+        .instruction:nth-child(5) { color: black; --delay: 8s; }
+
+        /* Try Now Button */
+        .try-now-button {
+            position: absolute;
+            bottom: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #ffffff;
+            color: #2575fc;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 25px;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 16px;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .try-now-button:hover {
+            background-color: black;
+            color: #ffffff;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            from {
+                transform: scale(1);
+            }
+            to {
+                transform: scale(1.03);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="instructions-container">
+        <p class="instruction head">Instructions to Download Excel File:</p>
+        <p class="instruction">1. Type or paste coordinates in input field and press Generate Excel.</p>
+        <p class="instruction">2. Enter name and Description (According to requirements) and press Next Button.</p>
+        <p class="instruction">3. You will be redirected to the same page again.</p>
+        <p class="instruction">4. Enter name and Description again (If needed), Otherwise press Download Button to download your Excel file.</p>
+
+        <!-- Try Now Button -->
+        <form method="post" action="{% url 'index' %}">
+            {% csrf_token %}
+            <button class="try-now-button" type="submit">Try Now</button>
+        </form>
+    </div>
+</body>
+</html>
