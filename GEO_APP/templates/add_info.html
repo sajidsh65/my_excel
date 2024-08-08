@@ -67,7 +67,7 @@
 <body>
     <div class="container">
         <h1>Update Information</h1>
-        <form action="{% url 'add_info' row=row %}" method="post">
+        <form action="{% url 'add_info' %}" method="post">
             {% csrf_token %}
             <div class="form-group">
                 <label for="name">Name:</label>
@@ -78,8 +78,8 @@
                 <textarea class="form-control" id="description" name="description" required></textarea>
             </div>
             <div class="btn-group">
-                <button type="submit" class="btn btn-primary">Next</button>
-                <a href="{% url 'download_excel' %}" class="btn btn-success">Download</a>
+                <button type="submit" class="btn btn-primary">Download</button>
+                <!-- <a href="{% url 'download_excel' %}" class="btn btn-success">Download</a> -->
             </div>
         </form>
     </div>

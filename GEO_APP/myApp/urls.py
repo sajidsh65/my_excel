@@ -7,6 +7,6 @@ urlpatterns = [
     # path('admin/', admin.site.urls),
     path('index/', views.index, name='index'),
     path('generate_excel/', views.generate_excel, name='generate_excel'),
-    path('add_info/<int:row>/', views.add_info, name='add_info'),
+    path('add_info/', views.add_info, name='add_info'),
     path('download/', views.download_excel, name='download_excel'),
 ]

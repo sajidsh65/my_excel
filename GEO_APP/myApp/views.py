@@ -36,12 +36,17 @@ def generate_excel(request):
         df.to_excel(file_path, index=False)
 
         # Redirect to the add_info view for further input
-        return redirect('add_info', row=0)  # Start with the first row
+        return redirect('add_info')  # Start with the first row
     else:
         return HttpResponse("Only POST requests are allowed.", status=405)
 
 
-def add_info(request, row):
+import pandas as pd
+from django.shortcuts import render, redirect
+from django.http import HttpResponse
+import os
+
+def add_info(request):
     file_path = 'coordinates.xlsx'
 
     if request.method == 'POST':
@@ -57,20 +62,17 @@ def add_info(request, row):
         if 'Description' not in df.columns:
             df['Description'] = ''
 
-        # Update the DataFrame
-        df.at[int(row), 'Name'] = name
-        df.at[int(row), 'Description'] = description
+        # Update all rows with the same Name and Description
+        df['Name'] = name
+        df['Description'] = description
 
         # Save the updated DataFrame back to the Excel file
         df.to_excel(file_path, index=False)
 
-        # Check if there are more rows to update
-        if int(row) + 1 < len(df):
-            return redirect('add_info', row=int(row) + 1)
-        else:
-            return redirect('download_excel')  # Redirect to the final download page
+        # Redirect to the download page after saving
+        return redirect('download_excel')  # Redirect to the final download page
 
-    return render(request, 'add_info.html', {'row': row})
+    return render(request, 'add_info.html')
 
 
 def download_excel(request):
